@@ -1,0 +1,25 @@
+img{
+ width: 100%;
+}
+
+:host{
+  display: block;
+  padding: 50px;
+}
+button{
+  margin-right: 15px;
+}
+p{
+  text-align: center;
+}
+.content{
+  @media (max-width: 415px) {
+    font-size: 16px;
+    text-align: center;
+  }
+}
+.cart-btn{
+  @media (max-width: 415px) {
+   margin-bottom: 15px;
+  }
+}

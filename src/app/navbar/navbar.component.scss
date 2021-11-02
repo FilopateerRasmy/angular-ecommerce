@@ -1,0 +1,17 @@
+
+.spacer {
+  flex: 1 1 auto;
+}
+.welcome{
+  @media (max-width: 415px) {
+font-size: 16px;
+  }
+  @media (max-width: 376px) {
+font-size: 14px;
+  }
+}
+.icon{
+  @media (max-width: 415px) {
+    width: 26px;
+      }
+}

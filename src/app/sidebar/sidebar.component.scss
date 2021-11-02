@@ -1,0 +1,13 @@
+.item {
+  transition: all 0.5s;
+  cursor: pointer;
+  &:hover:not(:last-child) {
+    background-color: #c2185b;
+    color: #fff;
+  }
+}
+
+.active {
+  background-color: #c2185b;
+  color: #fff;
+}

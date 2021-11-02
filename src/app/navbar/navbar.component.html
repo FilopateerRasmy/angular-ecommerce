@@ -1,0 +1,34 @@
+<mat-toolbar color="primary">
+  <button
+    mat-icon-button
+    class="icon"
+    aria-label="Example icon-button with menu icon"
+    *ngIf="isSmall"
+    (click)="toggle.emit()"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span *ngIf="isSmall">Angular-Shop</span>
+  <span class="spacer"></span>
+
+  <ng-container>
+    <span class="welcome" *ngIf="islogin$ | async as user"
+      >Welcome {{(name | async).first_name}}</span
+    >
+    <button
+      mat-icon-button
+      class="icon"
+      aria-label="Example icon-button with share icon"
+    ></button>
+  </ng-container>
+
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with share icon"
+  >
+    <mat-icon [matBadge]="(cart$ | async)?.length || 0" matBadgeColor="warn"
+      >shopping_cart</mat-icon
+    >
+  </button>
+</mat-toolbar>

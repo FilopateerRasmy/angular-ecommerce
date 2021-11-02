@@ -1,0 +1,23 @@
+<div *ngIf="!product">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
+
+<div *ngIf="product">
+  <div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutGap.xs="5px">
+    <div class="img" fxFlex="30" fxFlex.xs = '40'>
+      <img src="{{ product.image }}" alt="{{ product.title }}" />
+    </div>
+
+    <div fxLayout="column" fxFlex="50" fxLayoutAlign="start center" class="content">
+      <h2>{{ product.title }}</h2>
+      <p>{{ product.description }}</p>
+      <p>price: {{ product.price | currency}}</p>
+      <div>
+        <button mat-flat-button color="primary" class="cart-btn"(click)="add()" (click)="openSnackBar('New item has been added to the cart', 'close')">Add to Cart</button>
+        <button mat-flat-button color="primary" routerLink="/products">Back</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+

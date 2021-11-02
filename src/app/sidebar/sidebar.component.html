@@ -1,0 +1,11 @@
+<mat-toolbar color="primary"> <mat-icon>store</mat-icon> Angular-shop </mat-toolbar>
+        <mat-list role="list">
+          <mat-list-item role="listitem" class="item" routerLink= "/" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active">Home</mat-list-item>
+          <mat-list-item role="listitem" class="item" routerLinkActive="active" routerLink= "/products">Products</mat-list-item>
+          <mat-list-item role="listitem" class="item" routerLinkActive="active" routerLink= "/login" *ngIf="!(isLogin | async)">Login</mat-list-item>
+          <mat-list-item role="listitem" class="item" routerLinkActive="active" routerLink= "/signup" *ngIf="!(isLogin | async)">Sign Up</mat-list-item>
+          <mat-list-item role="listitem" class="item" routerLinkActive="active" routerLink= "/signup" *ngIf="isLogin | async" (click)="logout()">LogOut</mat-list-item>
+          <mat-list-item role="listitem"><mat-icon [matBadge]="(products$ | async)?.length || 0" matBadgeColor="warn"
+           routerLink="/cart" class="item">shopping_cart</mat-icon
+          ></mat-list-item>
+          </mat-list>

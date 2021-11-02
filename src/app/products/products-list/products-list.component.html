@@ -1,0 +1,38 @@
+<!-- <ng-template #loading>
+  <mat-spinner class="center"></mat-spinner>
+</ng-template> -->
+<div *ngIf="errorObject">
+<p>{{errorObject.errorFriendlyMessage}}</p>
+</div>
+<ng-container *ngIf="products$">
+  <div
+    fxLayout="row wrap"
+    fxLayoutGap.gt-md="80px"
+    fxLayoutAlign.sm="center center"
+    fxLayoutAlign.md="auto"
+    fxLayoutAlign.lg="space-evenly center"
+  >
+    <mat-card
+      class="card"
+      fxFlex="350px"
+      fxFlex.xs="100%"
+      *ngFor="let product of products$"
+    >
+      <img
+        mat-card-image
+        class="img"
+        [src]="product.image"
+        alt="{{ product.title }}"
+      />
+      <mat-card-header>
+        <mat-card-title>{{ product.title }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-actions>
+        <button [routerLink]="['/products', product.id]" mat-button>
+          See more
+        </button>
+        <button mat-button>{{ product.price | currency }}</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</ng-container>

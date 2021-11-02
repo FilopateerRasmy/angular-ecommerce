@@ -1,0 +1,44 @@
+<div *ngIf="!(products$ | async)?.length">
+  <h2>Cart is Empty</h2>
+</div>
+
+<section fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="20px" *ngIf="(products$ | async)?.length">
+  <div
+  flex-order.xs ="2"
+    fxFlex="60"
+    fxLayout="row wrap"
+    fxLayoutGap="10px"
+    fxLayoutAlign.sm="center center"
+    fxLayoutAlign.md="auto"
+    fxLayoutAlign.lg="auto"
+  >
+    <mat-card
+      class="card"
+      fxFlex="40"
+      fxFlex.xs="100%"
+      *ngFor="let product of products$ | async"
+    >
+      <img
+        mat-card-image
+        class="img"
+        src="{{ product.image }}"
+        alt="{{ product.title }}"
+      />
+      <mat-card-header>
+        <mat-card-title>{{ product.title }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-actions>
+        <button mat-button>{{ product.price | currency }}</button>
+        <button mat-button color="warn" (click)="onDelete(product.id)">
+          Delete
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div fxFlex="20" flex-order.xs ="1">
+    <p *ngFor="let product of products$ | async; let i = index">
+     {{i + 1 + ':'}} {{product.title}}
+    </p>
+    <h2>total price is {{ final }}</h2>
+  </div>
+</section>

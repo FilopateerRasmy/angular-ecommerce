@@ -1,0 +1,57 @@
+
+<div class="wrapper">
+  <mat-card class="card">
+    <mat-card-header fxLayoutAlign="center">
+      <mat-card-title>SignUp Now For Best Offers</mat-card-title>
+    </mat-card-header>
+
+    <form class="form" [formGroup]="signinForm" (ngSubmit)="onSubmit()" >
+
+
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          matInput
+          placeholder="Ex. pat@example.com"
+          formControlName="email"
+
+        />
+        <mat-error *ngIf="getErrors('email')?.email">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="getErrors('email')?.required">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Enter Your Password</mat-label>
+        <input
+          type="password"
+          matInput
+          placeholder="password"
+          formControlName="password"
+          [type]="hide ? 'password' : 'text'"
+
+        />
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="getErrors('password')?.pattern">
+         password must contains at least one uppercase one number and one special character
+        </mat-error>
+        <mat-error *ngIf="getErrors('password')?.required">
+          password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+
+
+      <button mat-flat-button color="primary" class="center" type="submit" [disabled]="!signinForm.valid">Submit</button>
+      <p *ngIf="errMessage">{{errMessage}}</p>
+    </form>
+  </mat-card>
+
+</div>
+
