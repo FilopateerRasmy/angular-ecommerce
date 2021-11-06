@@ -26,6 +26,7 @@
     mat-icon-button
     class="example-icon"
     aria-label="Example icon-button with share icon"
+    routerLink="/cart"
   >
     <mat-icon [matBadge]="(cart$ | async)?.length || 0" matBadgeColor="warn"
       >shopping_cart</mat-icon
